@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ivis-user-management-service
+spec:
+  type: ClusterIP
+  selector:
+    app: ivis-user-management
+  ports:
+    - protocol: TCP
+      port: 8002
+      targetPort: 8002
+      #nodePort: 30002 # Set the desired NodePort number
+
+

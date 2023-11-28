@@ -1,0 +1,13 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-egress-dev-azure
+spec:
+  podSelector:
+    matchLabels:
+      app: ivis-config-properties-server  # Replace with the labels that match your pod
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 13.107.42.20/32  # IP address of dev.azure.com; you may need to verify and update this
+

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivis-service-registry
+  labels:
+    app: ivis-service-registry
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivis-service-registry
+  template:
+    metadata:
+      labels:
+        app: ivis-service-registry
+    spec:
+      nodeSelector:
+        env: dev1v2
+      containers:
+      - name: ivis-service-registry
+        image: manojsai5855/ivis-service-registry:v3
+        ports:
+        - name: svcreg-port
+          containerPort: 8761

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivis-web-app
+  labels:
+    app: ivis-web-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivis-web-app
+  template:
+    metadata:
+      labels:
+        app: ivis-web-app
+    spec:
+     # hostNetwork: true
+      nodeSelector:
+        env: dev1v2
+      containers:
+      - name: ivis-web-app
+        image: manojsai5855/ivis-web-app:14
+        ports:
+        - name: ivis
+          containerPort: 8080

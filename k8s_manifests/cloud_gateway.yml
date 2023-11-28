@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivis-cloud-gateway
+  labels:
+    app: ivis-cloud-gateway
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivis-cloud-gateway
+  template:
+    metadata:
+      labels:
+        app: ivis-cloud-gateway
+    spec:
+      nodeSelector:
+        env: dev1v2      
+      containers:
+      - name: ivis-cloud-gateway
+        image: manojsai5855/ivis-cloud-gateway:ubuntu15
+        ports:
+        - name: cloudgw-port
+          containerPort: 8000
+

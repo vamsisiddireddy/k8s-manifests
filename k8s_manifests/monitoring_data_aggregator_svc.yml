@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ivis-monitoring-data-aggregator-service
+spec:
+  type: ClusterIP
+  selector:
+    app: ivis-monitoring-data-aggregator
+  ports:
+    - protocol: TCP
+      port: 6007
+      targetPort: 6007
+      # nodePort: 30001 # Set the desired NodePort number

@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivis-config-properties-server
+  labels:
+    app: ivis-config-properties-server
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivis-config-properties-server
+  template:
+    metadata:
+      labels:
+        app: ivis-config-properties-server
+    spec:
+      nodeSelector:
+        env: dev1v2   # Specify your desired key-value pair
+      containers:
+      - name: ivis-config-properties-server
+        image: manojsai5855/ivis-config-properties-server:v12
+        ports:
+        - name: conprovc-port
+          containerPort: 6666
+

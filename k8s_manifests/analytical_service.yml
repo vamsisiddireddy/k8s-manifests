@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ivis-analytical-service
+spec:
+  type: ClusterIP
+  selector:
+    app: ivis-analytical
+  ports:
+    - protocol: TCP
+      port: 8004
+      targetPort: 8004
+      #nodePort: 30001 # Set the desired NodePort number
+
+

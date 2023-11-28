@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivis-analytical
+  labels:
+    app: ivis-analytical
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivis-analytical
+  template:
+    metadata:
+      labels:
+        app: ivis-analytical
+    spec:
+      nodeSelector:
+        env: dev1v2
+      containers:
+      - name: ivis-analytical
+        image: manojsai5855/ivis-analytical-service:v3
+        ports:
+        - name: anlytical-port
+          containerPort: 8004
+

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivis-config-management
+  labels:
+    app: ivis-config-management
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivis-config-management
+  template:
+    metadata:
+      labels:
+        app: ivis-config-management
+    spec:
+      nodeSelector:
+        env: dev1v2      
+      containers:
+      - name: ivis-config-management
+        image: manojsai5855/ivis-customer-management:v3
+        ports:
+        - name: cfgmgmt-port
+          containerPort: 8099

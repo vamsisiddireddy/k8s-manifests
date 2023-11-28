@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivis-monitoring-config
+  labels:
+    app: ivis-monitoring-config
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivis-monitoring-config
+  template:
+    metadata:
+      labels:
+        app: ivis-monitoring-config
+    spec:
+      nodeSelector:
+        env: dev1v2
+      containers:
+      - name: ivis-monitoring-config
+        image: manojsai5855/ivis-monitoring-config:v1
+        ports:
+        - name: mntrcfg-port
+          containerPort: 8003

@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ivis-monitoring-data-aggregator
+  labels:
+    app: ivis-monitoring-data-aggregator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ivis-monitoring-data-aggregator
+  template:
+    metadata:
+      labels:
+        app: ivis-monitoring-data-aggregator
+    spec:
+      containers:
+      - name: ivis-monitoring-data-aggregator
+        image: manojsai5855/ivis-monitoring-data-aggregator
+        ports:
+        - name: mntrdtagr-port
+          containerPort: 6007
